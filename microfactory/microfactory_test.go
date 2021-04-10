@@ -20,7 +20,6 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
-	"runtime"
 	"testing"
 	"time"
 )
@@ -151,9 +150,9 @@ func testBuildAgain(t *testing.T,
 		// mtime on HFS+ (the filesystem on darwin) are stored with 1
 		// second granularity, so the timestamp checks will fail unless
 		// we wait at least a second. Sleeping 1.1s to be safe.
-		if runtime.GOOS == "darwin" {
+		//if runtime.GOOS == "darwin" { // unisoc: some ubuntu system have the same issue as darwin
 			time.Sleep(1100 * time.Millisecond)
-		}
+		//}
 
 		modify(config, dir, loadPkg)
 

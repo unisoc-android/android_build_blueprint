@@ -94,7 +94,7 @@ var (
 
 	test = pctx.StaticRule("test",
 		blueprint.RuleParams{
-			Command:     "$goTestRunnerCmd -p $pkgSrcDir -f $out -- $in -test.short",
+			Command:     "$goTestRunnerCmd -p $pkgSrcDir -f $out -- $in -test.short -test.timeout=33m",
 			CommandDeps: []string{"$goTestRunnerCmd"},
 			Description: "test $pkg",
 		},
